@@ -1,8 +1,10 @@
 package dev.vaibhav.productservice.models;
 
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,6 +18,7 @@ public class Product extends BaseModel {
 
     @ManyToOne
     private Category category ;
-    private double price ;
+    @OneToOne(cascade = {CascadeType.REMOVE})
+    private Price price ;
 
 }
